@@ -9,6 +9,7 @@ let choseBackground = document.querySelector('.choseBackground');
 let level = 0;
 makeGrid(levelCounter().length);
 let boxes = document.querySelectorAll('.box');
+let front = document.querySelectorAll('.front');
 let counter = 0;
 let scoreCounter = 0;
 let clicked = [];
@@ -17,7 +18,8 @@ let loop;
 let checked;
 let points = 0;
 let cols = 2;
-let cardBackground = localStorage.getItem('cardBackground');
+// let cardBackground = localStorage.getItem('cardBackground');
+
 timer();
 newGame();
 setCardBackground();
@@ -112,7 +114,7 @@ function timer() {
       time.style.fontSize = "70px";
       time.style.border = "5px solid red";
       time.style.animation = "pulse 1s infinite"
-    }else {
+    } else {
       time.style.fontSize = "60px";
       time.style.border = "5px solid #999";
       time.style.animation = "none";
@@ -205,10 +207,11 @@ function nextLevel() {
   newGame();
   returnClicks();
   showImgChooser();
-  setCardBackground();
   hideAnnounsment();
   timer();
   resizeContainer();
+  setCardBackground();
+
 }
 
 function resizeContainer(params) {
@@ -264,8 +267,8 @@ function showAnnounsment() {
 function hideImgChooser() {
   choseBackground.style.display = "none";
 }
-function showImgChooser() {
 
+function showImgChooser() {
   choseBackground.style.display = "table";
 }
 
@@ -288,7 +291,8 @@ function changeBackground() {
 }
 
 function setCardBackground() {
-  let front = document.querySelectorAll('.front');
+  let cardBackground = localStorage.getItem('cardBackground');
+  front = document.querySelectorAll('.front');
   front.forEach(el => {
     el.style.backgroundImage = `url('${cardBackground ? cardBackground : ""}')`;
   })
