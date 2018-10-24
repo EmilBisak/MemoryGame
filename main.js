@@ -75,9 +75,11 @@ function checkTiles() {
     } else if (level === 1 && checked.length == 16) {
       clearInterval(loop);
       score(nextLevelSelect);
+      document.body.style.zoom=0.9;
     } else if (level === 2 && checked.length == 36) {
       clearInterval(loop);
       score(nextLevelSelect);
+      document.body.style.zoom=0.8;
     } else if (level === 3 && checked.length == 64) {
       clearInterval(loop);
       score(nextLevelSelect);
@@ -86,14 +88,14 @@ function checkTiles() {
       gameOver(playAgain);
     }
     returnClicks();
-
+    
   } else {
     setTimeout(function () {
       front1.style.transform = "perspective(900px) rotateY(0deg)";
       back1.style.transform = "perspective(900px) rotateY(180deg)";
       front2.style.transform = "perspective(900px) rotateY(0deg)";
       back2.style.transform = "perspective(900px) rotateY(180deg)";
-
+      
       clicked.length = 0;
       counter = 0;
       returnClicks();
@@ -124,11 +126,11 @@ function timer() {
 
 function bonusTime() {
   sec += 6;
-  bonus.style.display = "inline-block";
+  bonus.style.visibility = "visible";
   setTimeout(function () {
-    bonus.style.display = "none";
+    bonus.style.visibility = "hidden";
   }, 1500)
-
+  
 }
 
 function removeClicks() {
@@ -175,7 +177,7 @@ function makeGrid(amount) {
     text += '<div class="front"></div>';
     text += '</div>';
     icons.splice(rand, 1);
-
+    
   }
   gameContainer.innerHTML = text;
 }
@@ -186,12 +188,15 @@ function checkLevel() {
     gameContainer.style.backgroundImage = "url('./img/css.jpg')";
   } else if (level === 1 && checked.length === 16) {
     nextLevel();
+    document.body.style.zoom=0.9;
     gameContainer.style.backgroundImage = "url('./img/js.png')";
   } else if (level === 2 && checked.length === 36) {
     nextLevel();
+    document.body.style.zoom=0.8;
     gameContainer.style.backgroundImage = "url('./img/react.png')";
   } else if (level === 3 && checked.length === 64) {
     nextLevel();
+    document.body.style.zoom=0.75;
     gameContainer.style.backgroundImage = "url('./img/nodejs.png')";
   } else if (level === 4 && checked.length === 100) {
     alert("Game over");
@@ -203,6 +208,7 @@ function nextLevel() {
   clearInterval(loop);
   level++;
   sec = 101;
+  gameContainer.style.top = "22px";
   makeGrid(levelCounter().length);
   newGame();
   returnClicks();
@@ -211,7 +217,7 @@ function nextLevel() {
   timer();
   resizeContainer();
   setCardBackground();
-
+  
 }
 
 function resizeContainer(params) {
@@ -226,7 +232,7 @@ function timeOut(callback) {
   announsment.innerHTML = "";
   announsment.innerHTML = `<span>Time is out! </span>
   <input type="button" class="resetBtn" value="RESET">`;
-  announsment.style.display = "inline-block";
+  announsment.style.display = "block";
   if (announsment.innerHTML) {
     callback();
   }
@@ -241,8 +247,9 @@ function score(callback) {
   points = points + Math.ceil(sec / 2 - 3);
   announsment.innerHTML = `You won ${points} points! <span class="nextLevelBtn">Next Level</span>`;
   gameContainer.innerHTML += '<span class="hideAnnounsment">show image</span>';
-  announsment.style.display = "inline-block";
+  announsment.style.display = "block";
   bigScore.innerHTML = "Score : " + points;
+  gameContainer.style.top = "-80px";
   callback()
 }
 
@@ -255,12 +262,12 @@ function nextLevelSelect() {
 }
 
 function hideAnnounsmentOnHover() {
-  announsment.style.display = 'none';
+  announsment.style.visibility = 'hidden';
   gameContainer.style.boxShadow = "6px 6px 60px";
 }
 
 function showAnnounsment() {
-  announsment.style.display = 'block';
+  announsment.style.visibility = 'visible';
   gameContainer.style.boxShadow = "2px 2px 30px";
 }
 
@@ -312,7 +319,7 @@ function gameOver(callback) {
   announsment.innerHTML = `<p> Game over! <p/> <p> You won ${points} points! <p/> <span class="nextLevelBtn">Play Again</span>`;
   announsment.style.height = "200px";
   gameContainer.innerHTML += '<span class="hideAnnounsment">show image</span>';
-  announsment.style.display = "inline-block";
+  announsment.style.display = "block";
   bigScore.innerHTML = "Score : " + points;
   callback()
 }
