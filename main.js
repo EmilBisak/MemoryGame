@@ -17,6 +17,7 @@ let sec = 100;
 let loop;
 let checked;
 let points = 0;
+let totalScore = 0;
 let cols = 2;
 // let cardBackground = localStorage.getItem('cardBackground');
 
@@ -75,11 +76,9 @@ function checkTiles() {
     } else if (level === 1 && checked.length == 16) {
       clearInterval(loop);
       score(nextLevelSelect);
-      document.body.style.zoom=0.9;
     } else if (level === 2 && checked.length == 36) {
       clearInterval(loop);
       score(nextLevelSelect);
-      document.body.style.zoom=0.8;
     } else if (level === 3 && checked.length == 64) {
       clearInterval(loop);
       score(nextLevelSelect);
@@ -244,11 +243,12 @@ function hideAnnounsment() {
 
 function score(callback) {
   hideImgChooser();
-  points = points + Math.ceil(sec / 2 - 3);
+  points = Math.ceil(sec / 2 - 3);
+  totalScore = points + totalScore;
   announsment.innerHTML = `You won ${points} points! <span class="nextLevelBtn">Next Level</span>`;
   gameContainer.innerHTML += '<span class="hideAnnounsment">show image</span>';
   announsment.style.display = "block";
-  bigScore.innerHTML = "Score : " + points;
+  bigScore.innerHTML = "Score : " + totalScore;
   gameContainer.style.top = "-80px";
   callback()
 }
@@ -315,11 +315,12 @@ function playAgain() {
 
 function gameOver(callback) {
   hideImgChooser();
-  points = points + Math.ceil(sec / 2 - 3);
-  announsment.innerHTML = `<p> Game over! <p/> <p> You won ${points} points! <p/> <span class="nextLevelBtn">Play Again</span>`;
+  totalScore = points + totalScore;
+  announsment.innerHTML = `<p> Game over! <p/> <p> You won ${totalScore} points! <p/> <span class="nextLevelBtn">Play Again</span>`;
   announsment.style.height = "200px";
   gameContainer.innerHTML += '<span class="hideAnnounsment">show image</span>';
   announsment.style.display = "block";
-  bigScore.innerHTML = "Score : " + points;
+  bigScore.innerHTML = "Score : " + totalScore;
+  gameContainer.style.top = "-125px";
   callback()
 }

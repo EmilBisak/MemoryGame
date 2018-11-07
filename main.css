@@ -104,7 +104,7 @@ header {
   text-align: center;
   line-height: 100px;
   font-size: 60px;
-  top: 85px;
+  top: 140px;
   display: none;
   user-select: none;
   text-transform: uppercase;
@@ -164,6 +164,7 @@ header {
   position: absolute;
   top: -36px;
   right: -3px;
+  background-color: #fff;
   border: 2px solid #8c8c8c;
   border-radius: 5px;
   user-select: none;
@@ -177,7 +178,6 @@ header {
 .box {
   width: 75px;
   height: 75px;
-  border: 1px solid #eee;
   position: relative;
   float: left;
   box-sizing: border-box;
@@ -193,13 +193,13 @@ header {
   text-align: center;
   font-size: 25px;
   color: #fff;
-  background-color: tomato;
+  background-color: #6c47ff;
   transform: perspective(900px) rotateY(180deg);
   transition: 0.7s all;
-  /* backface-visibility: hidden; */
 }
 
 .front {
+  border: 1px solid #eee;
   width: 75px;
   height: 75px;
   box-sizing: border-box;
@@ -208,7 +208,7 @@ header {
   transition: 0.7s all;
   background-position: center;
   background-repeat: no-repeat;
-  background-size: cover;
+  background-size: 60px;
   backface-visibility: hidden;
 }
 
@@ -309,6 +309,29 @@ header {
     font-size: 30px;
   }
 }
+@media screen and (max-width: 571px) {
+  .gameContainer {
+    top: 0;
+  }
+
+  .announsment {
+    top: 90px;
+  }
+
+  .score {
+    width: 100%;
+    display: table;
+    margin: 0 auto 10px;
+    font-size: 30px;
+  }
+  
+  .timeHolder {
+    width: 100%;
+    display: table;
+    margin: 0 auto;
+    margin-left: 45px;
+  }
+}
 @media screen and (max-width: 550px) {
   .choseBackground li {
     padding: 8px;
@@ -324,17 +347,18 @@ header {
     height: 50px;
   }
   
-  .score {
+  /* .score {
     width: 100%;
     display: table;
     margin: 0 auto 10px;
+    font-size: 30px;
   }
   .timeHolder {
     width: 100%;
     display: table;
     margin: 0 auto;
     margin-left: 45px;
-  }
+  } */
   
   .time {
     width: 80px;
