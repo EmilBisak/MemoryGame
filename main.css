@@ -3,12 +3,17 @@
   margin: 0;
 }
 
+html {
+  zoom: .6
+}
+
 body {
   font-family: Arial;
   background-color: #f1f1f1;
   width: 100%;
   background-image: url("./img/backgrounds/seamless_stripes.jpg");
   /* background-size: cover; */
+  zoom: 1.66;
 }
 
 .container {
