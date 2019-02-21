@@ -154,6 +154,7 @@ header {
   border: 1px solid #eee;
   box-shadow: 2px 2px 30px;
   margin: 10px auto;
+  background-color: #fff;
   background-image: url('./img/html.jpg');
   background-position: center;
   background-repeat: no-repeat;

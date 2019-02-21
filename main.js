@@ -187,15 +187,15 @@ function checkLevel() {
     gameContainer.style.backgroundImage = "url('./img/css.jpg')";
   } else if (level === 1 && checked.length === 16) {
     nextLevel();
-    document.body.style.zoom=0.9;
+    document.body.style.zoom=1.5;
     gameContainer.style.backgroundImage = "url('./img/js.png')";
   } else if (level === 2 && checked.length === 36) {
     nextLevel();
-    document.body.style.zoom=0.8;
+    document.body.style.zoom=1.4;
     gameContainer.style.backgroundImage = "url('./img/react.png')";
   } else if (level === 3 && checked.length === 64) {
     nextLevel();
-    document.body.style.zoom=0.75;
+    document.body.style.zoom=1.3;
     gameContainer.style.backgroundImage = "url('./img/nodejs.png')";
   } else if (level === 4 && checked.length === 100) {
     alert("Game over");
