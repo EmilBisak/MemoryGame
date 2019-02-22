@@ -87,14 +87,14 @@ function checkTiles() {
       gameOver(playAgain);
     }
     returnClicks();
-    
+
   } else {
     setTimeout(function () {
       front1.style.transform = "perspective(900px) rotateY(0deg)";
       back1.style.transform = "perspective(900px) rotateY(180deg)";
       front2.style.transform = "perspective(900px) rotateY(0deg)";
       back2.style.transform = "perspective(900px) rotateY(180deg)";
-      
+
       clicked.length = 0;
       counter = 0;
       returnClicks();
@@ -129,7 +129,7 @@ function bonusTime() {
   setTimeout(function () {
     bonus.style.visibility = "hidden";
   }, 1500)
-  
+
 }
 
 function removeClicks() {
@@ -176,7 +176,7 @@ function makeGrid(amount) {
     text += '<div class="front"></div>';
     text += '</div>';
     icons.splice(rand, 1);
-    
+
   }
   gameContainer.innerHTML = text;
 }
@@ -187,15 +187,15 @@ function checkLevel() {
     gameContainer.style.backgroundImage = "url('./img/css.jpg')";
   } else if (level === 1 && checked.length === 16) {
     nextLevel();
-    document.body.style.zoom=1.5;
+    window.innerWidth <= 500 ? styleAdjust(1) : styleAdjust(1.5);
     gameContainer.style.backgroundImage = "url('./img/js.png')";
   } else if (level === 2 && checked.length === 36) {
     nextLevel();
-    document.body.style.zoom=1.4;
+    window.innerWidth <= 500 ? styleAdjust(0.9,"-25px") : styleAdjust(1.45);
     gameContainer.style.backgroundImage = "url('./img/react.png')";
   } else if (level === 3 && checked.length === 64) {
     nextLevel();
-    document.body.style.zoom=1.3;
+    window.innerWidth <= 500 ? styleAdjust(0.8,"-40px") : styleAdjust(1.45);
     gameContainer.style.backgroundImage = "url('./img/nodejs.png')";
   } else if (level === 4 && checked.length === 100) {
     alert("Game over");
@@ -216,11 +216,11 @@ function nextLevel() {
   timer();
   resizeContainer();
   setCardBackground();
-  
+
 }
 
-function resizeContainer(params) {
-  cols = cols + 2;
+function resizeContainer() {
+  cols += 2;
   gameContainer.style.width = cols * 75 + "px";
   gameContainer.style.height = cols * 75 + "px";
 }
@@ -277,6 +277,11 @@ function hideImgChooser() {
 
 function showImgChooser() {
   choseBackground.style.display = "table";
+}
+
+function styleAdjust(zoomNum, posNum) {
+  document.body.style.zoom = zoomNum;
+  gameContainer.style.left = posNum;
 }
 
 function reset() {
